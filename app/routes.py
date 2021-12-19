@@ -91,43 +91,6 @@ def start():
         return redirect(url_for('success', var=var, var1=var1, var2=var2))
     return render_template('start.html', title='Show', form=form)
 
-#@app.route('/results/<n_clusters>/<n_noise>/<labels>/<keys>', methods=['GET', 'POST'])
-#def results(n_clusters, n_noise, labels, keys):
-#    form = PostForm()
-#    #regex = r"(?P<keys>\['(?P<key>\w*?)\'?])"
-#    regex = r"\'(?P<key>\w*)\'"
-#    matches = re.finditer(regex, keys)
-#    keys_reg = []
-#    for matchNum, match in enumerate(matches, start=1):
-#        for groupNum in range(0, len(match.groups())):
-#            #if groupNum % 2 == 0:
-#            keys_reg.append("{group}".format(group = match.group('key')))
-#
-#    #regex1 = r"\[(?P<label>(\-\d+)?|(\d+)?)\]"
-#    regex1 = r"(?P<label>\-?\d+)"
-#    matches = re.finditer(regex1, labels)
-#    labels_reg = []
-#    for matchNum, match in enumerate(matches, start=1):
-#        for groupNum in range(0, len(match.groups())):
-#            #if groupNum % 2 == 0:
-#            labels_reg.append("{group}".format(group = match.group('label')))    
-#    
-#    if request.method == 'POST' and form.validate_on_submit() and form.n.data=='yes':  
-#        
-#        answers = []
-#        for i in range(len(labels_reg)):
-#            if int(labels_reg[i]) < 0: 
-#                labels_reg[i] = len(labels_reg)
-#            if int(labels_reg[i]) == 0:
-#                   labels_reg[i] = len(labels_reg) - 1
-#            answers.append(requests.post('https://slot-ml.com/api/v1/users/1ad36c1fb80a7034c827120650895c8670f083cc/results/', data={"vector": keys_reg[i], "class": labels_reg[i]}))
-#        #answers = ''.join(answers)
-#        var = "Results have been successfully posted!\n"
-#        return redirect(url_for('success', var=var, answers=answers))
-#    return render_template('results.html', title='Results', n_clusters=n_clusters, n_noise=n_noise, form=form, keys=keys, labels=labels)
-
-
-
 @app.route('/success/<var>/<var1>/<var2>)', methods=['GET', 'POST'])
 def success(var, var1, var2):
     return  render_template('success.html', title='success', var=var, var1=var1, var2=var2)
