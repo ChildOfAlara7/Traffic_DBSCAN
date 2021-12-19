@@ -79,8 +79,9 @@ def start():
         for i in range(len(labels)):
             if int(labels[i]) == 0:
                    labels[i] = zer - 1
-            requests.post('https://slot-ml.com/api/v1/users/1ad36c1fb80a7034c827120650895c8670f083cc/results/', data={"vector": keys[i], "class": labels[i]})
-           #time.sleep(5)
+            if int(labels[i]) > 0:
+                requests.post('https://slot-ml.com/api/v1/users/1ad36c1fb80a7034c827120650895c8670f083cc/results/', data={"vector": keys[i], "class": labels[i]})
+           #time.sleep(1)
 
 
         n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
