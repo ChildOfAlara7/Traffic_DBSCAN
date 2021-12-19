@@ -1,0 +1,17 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Classificator</title>
+      {% else %}
+      <title>Welcome to Classificator</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>Commands: <br>
+          <a href="/">Home</a><br>
+          <a href="/start">Start classification</a><br>
+          <a href="/showstat">Show stat</a>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
